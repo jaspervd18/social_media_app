@@ -30,6 +30,8 @@ model Like {
     post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
 
     @@id([userId, postId])
+    @@index([postId])
+    @@index([userId])
 }
 
 // Necessary for Next auth
