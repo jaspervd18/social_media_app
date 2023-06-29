@@ -66,7 +66,7 @@ function Form() {
           placeholder="What's up?"
         />
       </div>
-      <Button className="self-end">Post</Button>
+      <Button className="self-end" />
     </form>
   );
 }
