@@ -4,6 +4,7 @@ import Link from "next/link";
 import { formatDateTime } from "~/utils/format";
 import { useSession } from "next-auth/react";
 import { VscHeart, VscHeartFilled } from "react-icons/vsc";
+import { IconHoverEffect } from "./IconHoverEffect";
 
 type Post = {
   id: string;
@@ -17,7 +18,7 @@ type Post = {
 type InfinitePostListProps = {
   isLoading: boolean;
   isError: boolean;
-  hasMore: boolean;
+  hasMore: boolean | undefined;
   fetchNewPosts: () => Promise<unknown>;
   posts?: Post[];
 };
@@ -27,7 +28,7 @@ export function InfinitePostList({
   isError,
   isLoading,
   fetchNewPosts,
-  hasMore,
+  hasMore = false,
 }: InfinitePostListProps) {
   if (isLoading) return <h1>Loading...</h1>;
   if (isError) return <h1>Error</h1>;
@@ -103,7 +104,7 @@ function HeartButton({ likedByMe, likeCount }: HeartButtonProps) {
 
   return (
     <button
-      className={`group flex items-center gap-1 self-start transition-colors duration-200 ${
+      className={`group -ml-2 flex items-center gap-1 self-start transition-colors duration-200 ${
         likedByMe
           ? "text-red-500"
           : "text-gray-500 hover:text-red-500 focus-visible:text-red-500"

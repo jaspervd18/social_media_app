@@ -29,7 +29,7 @@ function RecentPosts() {
       isError={posts.isError}
       isLoading={posts.isLoading}
       hasMore={posts.hasNextPage}
-      fetchNewPosts={posts.fetchNextPage()}
+      fetchNewPosts={posts.fetchNextPage}
     />
   );
 }
