@@ -90,7 +90,7 @@ function Form() {
           placeholder="What's up?"
         />
       </div>
-      <Button className="self-end" />
+      <Button className="self-end">Post</Button>
     </form>
   );
 }
