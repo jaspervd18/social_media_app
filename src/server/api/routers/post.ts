@@ -60,6 +60,7 @@ export const postRouter = createTRPCRouter({
           userId: ctx.session.user.id,
         },
       });
+      void ctx.revalidateSSG?.(`/profiles/${ctx.session.user.id}`);
 
       return post;
     }),
