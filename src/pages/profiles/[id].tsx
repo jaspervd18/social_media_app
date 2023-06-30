@@ -68,7 +68,7 @@ const ProfilePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   );
 };
 
-function FollowButton() {
+function FollowButton({ userId }) {
   return <h1>Follow</h1>;
 }
 
