@@ -18,8 +18,6 @@ export function Button({ small, gray, className = "", ...props }: ButtonProps) {
     <button
       className={`rounded-full transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-50 ${sizeClasses} ${colorClasses} ${className}`}
       {...props}
-    >
-      Post
-    </button>
+    ></button>
   );
 }
