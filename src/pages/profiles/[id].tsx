@@ -18,16 +18,21 @@ const ProfilePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   id,
 }) => {
   const { data: profile } = api.profile.getById.useQuery({ id });
+  const posts = api.post.infiniteProfileFeed.useInfiniteQuery(
+    { userId: id },
+    { getNextPageParam: (lastPage) => lastPage.nextCursor }
+  );
 
-  if (profile == null || profile.name == null)
+  if (profile == null || profile.name == null) {
     return <ErrorPage statusCode={404} />;
+  }
 
   return (
     <>
       <Head>
         <title>{`Stardew Hub - ${profile.name}`}</title>
       </Head>
-      <header className="sticky top-8 z-10 flex items-center border-b bg-white px-4 py-2">
+      <header className="sticky top-0 z-10 flex items-center border-b bg-white px-4 py-2">
         <Link href=".." className="mr-2">
           <IconHoverEffect>
             <VscArrowLeft className="h-6 w-6" />
@@ -43,16 +48,22 @@ const ProfilePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
             {getPlural(profile.postsCount, "Follower", "Followers")} -{" "}
             {profile.followsCount} Following
           </div>
-          <FollowButton
-            isFollowing={profile.isFollowing}
-            userId={id}
-            onClick={() => null}
-          />
         </div>
-        <main>
-          <InfinitePostList />
-        </main>
+        <FollowButton
+          isFollowing={profile.isFollowing}
+          userId={id}
+          onClick={() => null}
+        />
       </header>
+      <main>
+        <InfinitePostList
+          posts={posts.data?.pages.flatMap((page) => page.data)}
+          isError={posts.isError}
+          isLoading={posts.isLoading}
+          hasMore={posts.hasNextPage}
+          fetchNewPosts={posts.fetchNextPage}
+        />
+      </main>
     </>
   );
 };
