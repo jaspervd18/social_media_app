@@ -4,6 +4,6 @@ This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3
 
 ## Live demo
 
-The live demo of this project runs on the [Stardew Hub](https://duckduckgo.com](https://social-media-app-eta-tawny.vercel.app/)https://social-media-app-eta-tawny.vercel.app/) website.
+The live demo of this project runs on the [Stardew Hub](https://social-media-app-eta-tawny.vercel.app/) website.
 
 
