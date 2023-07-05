@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Amatic SC", cursive;
+}
+
+.blue-gradient {
+  background: #4790fc;
+  background: linear-gradient(-90deg, #4790fc 0%, rgba(60, 51, 80, 0) 100%);
+  background: -webkit-linear-gradient(
+    -90deg,
+    #4790fc 0%,
+    rgba(60, 51, 80, 0) 100%
+  );
+}

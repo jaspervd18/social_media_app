@@ -5,25 +5,25 @@ import { InfinitePostList } from "~/components/InfinitePostList";
 import { NewPostForm } from "~/components/NewPostForm";
 import { api } from "~/utils/api";
 
-const TABS = ["Recent", "Following"] as const;
+const TABS = ["RECENT", "FOLLOWING"] as const;
 
 const Home: NextPage = () => {
   const [selectedTab, setSelectedTab] =
-    useState<(typeof TABS)[number]>("Recent");
+    useState<(typeof TABS)[number]>("RECENT");
   const session = useSession();
   return (
     <>
       <header className="sticky top-0 z-10 border-b bg-white pt-2">
-        <h1 className="mb-2 px-4 text-lg font-bold">Home</h1>
+        <h1 className="mb-2 px-4 text-2xl font-extrabold">Home</h1>
         {session.status === "authenticated" && (
           <div className="flex">
             {TABS.map((tab) => {
               return (
                 <button
                   key={tab}
-                  className={`flex-grow p-2 hover:bg-gray-200 focus-visible:bg-gray-200 ${
+                  className={`flex-grow p-2 text-xl hover:bg-gray-200 focus-visible:bg-gray-200 ${
                     tab === selectedTab
-                      ? "border-b-4 border-b-blue-500 font-bold"
+                      ? "border-b-4 border-b-blue-500 font-extrabold"
                       : ""
                   }`}
                   onClick={() => setSelectedTab(tab)}
@@ -36,7 +36,7 @@ const Home: NextPage = () => {
         )}
       </header>
       <NewPostForm />
-      {selectedTab === "Recent" ? <RecentPosts /> : <FollowingPosts />}
+      {selectedTab === "RECENT" ? <RecentPosts /> : <FollowingPosts />}
     </>
   );
 };

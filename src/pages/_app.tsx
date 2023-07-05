@@ -8,6 +8,8 @@ import "~/styles/globals.css";
 import Head from "next/head";
 import { SideNav } from "~/components/SideNav";
 
+import "./index.css";
+
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
@@ -15,17 +17,19 @@ const MyApp: AppType<{ session: Session | null }> = ({
   return (
     <SessionProvider session={session}>
       <Head>
-        <title>AOT Hub</title>
+        <title>Stardew Hub</title>
         <meta
           name="description"
-          content="This is an Attack On Titan social platform "
+          content="This is a social platform created for Stardew Valley players."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="container mx-auto flex items-start sm:pr-4">
-        <SideNav />
-        <div className="min-h-screen flex-grow border-x">
-          <Component {...pageProps} />
+      <div className="blue-gradient">
+        <div className="container mx-auto flex items-start sm:pr-4">
+          <SideNav />
+          <div className="min-h-screen flex-grow border-x bg-white text-xl">
+            <Component {...pageProps} />
+          </div>
         </div>
       </div>
     </SessionProvider>
